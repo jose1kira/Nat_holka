@@ -20,6 +20,133 @@
             position: relative;
         }
 
+        /* Password Screen Styling */
+        .password-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 25%, #CD853F 50%, #DEB887 75%, #F4A460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .password-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .password-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #8B4513;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .password-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #654321;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .password-input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .password-input {
+            padding: 1rem;
+            border: 2px solid rgba(139, 69, 19, 0.3);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.8);
+            color: #8B4513;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #8B4513;
+            background: rgba(255, 255, 255, 0.95);
+            transform: scale(1.02);
+        }
+
+        .password-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .password-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .password-hint {
+            font-size: 0.9rem;
+            color: #654321;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .password-error {
+            color: #dc3545;
+            font-size: 0.9rem;
+            font-weight: 500;
+            min-height: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .password-error.show {
+            opacity: 1;
+        }
+
+        /* Mobile responsiveness for password screen */
+        @media (max-width: 768px) {
+            .password-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .password-input-container {
+                gap: 0.8rem;
+            }
+
+            .password-input {
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+
+            .password-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
         /* Fall leaves animation background */
         body::before {
             content: '';
@@ -82,6 +209,15 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        .slide-date {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: #A0522D;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-style: italic;
+        }
+
         .slide-description {
             font-size: clamp(1rem, 2.5vw, 1.3rem);
             color: #654321;
@@ -101,22 +237,16 @@
             margin-bottom: 2rem;
         }
 
-        .image-placeholder {
+        .gallery-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(45deg, #DEB887, #F4A460);
+            object-fit: cover;
             border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #8B4513;
-            font-size: 1.2rem;
-            font-weight: 500;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        .image-placeholder:hover {
+        .gallery-image:hover {
             transform: scale(1.05);
         }
 
@@ -233,9 +363,8 @@
                 gap: 0.5rem;
             }
 
-            .image-placeholder {
+            .gallery-image {
                 height: 150px;
-                font-size: 1rem;
             }
 
             .nav-button {
@@ -279,86 +408,261 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Password Protection Screen -->
+    <div class="password-screen" id="passwordScreen">
+        <div class="password-container">
+            <h1 class="password-title">Our Secret Love Story</h1>
+            <p class="password-subtitle">Enter the password to unlock our memories</p>
+            <div class="password-input-container">
+                <input type="password" id="passwordInput" placeholder="Enter password..." class="password-input">
+                <button onclick="checkPassword()" class="password-button">Unlock</button>
+            </div>
+            <p class="password-hint">💕 Hint: My special nickname for you</p>
+            <div class="password-error" id="passwordError"></div>
+        </div>
+    </div>
+
+    <div class="container" id="mainContainer" style="display: none;">
         <!-- Slide 1: First Meeting -->
         <div class="slide active">
-            <h1 class="slide-title">Date 1: Our First Coffee</h1>
+            <h1 class="slide-title">Date 1: El inicio de Todo</h1>
+            <p class="slide-date">Febrero 20, 2025</p>
             <p class="slide-description">
-                That cozy little café where we first met. The smell of freshly brewed coffee mixed with nervous excitement, 
-                and I knew from the moment you smiled that this was something special.
+                Un brunch, una broma, una tula de minecraft, un almuerzo mexicano, una cancion, una caminata y un beso robado.
             </p>
             <div class="image-gallery">
-                <div class="image-placeholder">☕ Coffee Shop</div>
-                <div class="image-placeholder">😊 First Smile</div>
-                <div class="image-placeholder">📚 Deep Conversation</div>
-                <div class="image-placeholder">🌅 Sunset Walk</div>
+                <img src="imgs/date1/coffee_shop.jpg" alt="Coffee Shop" class="gallery-image">
+                <img src="imgs/date1/first_smile.jpg" alt="First Smile" class="gallery-image">
+                <img src="imgs/date1/conversation.jpg" alt="Deep Conversation" class="gallery-image">
+                <img src="imgs/date1/sunset_walk.jpg" alt="Sunset Walk" class="gallery-image">
             </div>
         </div>
 
         <!-- Slide 2: Second Date -->
         <div class="slide">
             <h1 class="slide-title">Date 2: The Art Gallery</h1>
+            <p class="slide-date">October 22, 2023</p>
             <p class="slide-description">
                 Walking through the gallery, you explained each painting with such passion. I wasn't just falling for you, 
                 I was falling for how you see the world.
             </p>
             <div class="image-gallery">
-                <div class="image-placeholder">🎨 Art Gallery</div>
-                <div class="image-placeholder">💭 Deep Thoughts</div>
-                <div class="image-placeholder">📸 Gallery Selfie</div>
+                <img src="imgs/date2/art_gallery.jpg" alt="Art Gallery" class="gallery-image">
+                <img src="imgs/date2/deep_thoughts.jpg" alt="Deep Thoughts" class="gallery-image">
+                <img src="imgs/date2/gallery_selfie.jpg" alt="Gallery Selfie" class="gallery-image">
             </div>
         </div>
 
         <!-- Slide 3: Third Date -->
         <div class="slide">
-            <h1 class="slide-title">Date 3: The Picnic Adventure</h1>
+            <h1 class="slide-title">Date 3: Sorpresa en Kokino</h1>
+            <p class="slide-date">November 5, 2023</p>
             <p class="slide-description">
                 That spontaneous picnic in the park where we talked for hours. The way you laughed at my terrible jokes 
                 made me realize I never wanted to stop making you smile.
             </p>
             <div class="image-gallery">
-                <div class="image-placeholder">🧺 Picnic Setup</div>
-                <div class="image-placeholder">😄 Laughing Together</div>
-                <div class="image-placeholder">🌳 Park Memories</div>
-                <div class="image-placeholder">🌅 Golden Hour</div>
+                <img src="imgs/date3/picnic_setup.jpg" alt="Picnic Setup" class="gallery-image">
+                <img src="imgs/date3/laughing_together.jpg" alt="Laughing Together" class="gallery-image">
+                <img src="imgs/date3/park_memories.jpg" alt="Park Memories" class="gallery-image">
+                <img src="imgs/date3/golden_hour.jpg" alt="Golden Hour" class="gallery-image">
             </div>
         </div>
 
         <!-- Slide 4: Fourth Date -->
         <div class="slide">
-            <h1 class="slide-title">Date 4: The Cooking Night</h1>
+            <h1 class="slide-title">Date 4: Estudiando</h1>
+            <p class="slide-date">November 18, 2023</p>
             <p class="slide-description">
                 Our first time cooking together was a beautiful disaster. Flour everywhere, laughter filling the kitchen, 
                 and somehow we created the most perfect imperfect meal.
             </p>
             <div class="image-gallery">
-                <div class="image-placeholder">👨‍🍳 Cooking Together</div>
-                <div class="image-placeholder">😅 Flour Fight</div>
-                <div class="image-placeholder">🍝 Our Masterpiece</div>
+                <img src="imgs/date4/cooking_together.jpg" alt="Cooking Together" class="gallery-image">
+                <img src="imgs/date4/flour_fight.jpg" alt="Flour Fight" class="gallery-image">
+                <img src="imgs/date4/our_masterpiece.jpg" alt="Our Masterpiece" class="gallery-image">
             </div>
         </div>
 
         <!-- Slide 5: Fifth Date -->
         <div class="slide">
             <h1 class="slide-title">Date 5: The Movie Night</h1>
+            <p class="slide-date">December 2, 2023</p>
             <p class="slide-description">
                 Cuddled up on the couch, sharing popcorn and secrets. That's when I knew you weren't just someone I was dating, 
                 you were becoming my best friend.
             </p>
             <div class="image-gallery">
-                <div class="image-placeholder">🎬 Movie Night</div>
-                <div class="image-placeholder">🍿 Sharing Popcorn</div>
-                <div class="image-placeholder">💕 Cozy Cuddles</div>
-                <div class="image-placeholder">😴 Falling Asleep</div>
+                <img src="imgs/date5/movie_night.jpg" alt="Movie Night" class="gallery-image">
+                <img src="imgs/date5/sharing_popcorn.jpg" alt="Sharing Popcorn" class="gallery-image">
+                <img src="imgs/date5/cozy_cuddles.jpg" alt="Cozy Cuddles" class="gallery-image">
+                <img src="imgs/date5/falling_asleep.jpg" alt="Falling Asleep" class="gallery-image">
             </div>
         </div>
 
-        <!-- Slide 6: The Proposal -->
+        <!-- Slide 6: Sixth Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 6: The Beach Day</h1>
+            <p class="slide-date">December 16, 2023</p>
+            <p class="slide-description">
+                A spontaneous trip to the beach where we built sandcastles and watched the waves. 
+                Your laughter mixed with the ocean breeze created the perfect soundtrack to our growing love.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date6/beach_arrival.jpg" alt="Beach Arrival" class="gallery-image">
+                <img src="imgs/date6/sandcastles.jpg" alt="Building Sandcastles" class="gallery-image">
+                <img src="imgs/date6/wave_watching.jpg" alt="Watching Waves" class="gallery-image">
+                <img src="imgs/date6/beach_sunset.jpg" alt="Beach Sunset" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 7: Seventh Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 7: The Concert Night</h1>
+            <p class="slide-date">January 6, 2024</p>
+            <p class="slide-description">
+                Our first concert together, dancing to our favorite songs under the stars. 
+                The way you sang along and held my hand made me realize music sounds better with you.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date7/concert_venue.jpg" alt="Concert Venue" class="gallery-image">
+                <img src="imgs/date7/dancing_together.jpg" alt="Dancing Together" class="gallery-image">
+                <img src="imgs/date7/singing_along.jpg" alt="Singing Along" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 8: Eighth Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 8: The Museum Adventure</h1>
+            <p class="slide-date">January 20, 2024</p>
+            <p class="slide-description">
+                Exploring the museum hand in hand, discovering new worlds together. 
+                Your curiosity and wonder made every exhibit come alive in ways I'd never seen before.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date8/museum_entrance.jpg" alt="Museum Entrance" class="gallery-image">
+                <img src="imgs/date8/exploring_exhibits.jpg" alt="Exploring Exhibits" class="gallery-image">
+                <img src="imgs/date8/museum_selfie.jpg" alt="Museum Selfie" class="gallery-image">
+                <img src="imgs/date8/gift_shop.jpg" alt="Gift Shop" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 9: Ninth Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 9: The Ice Skating</h1>
+            <p class="slide-date">February 3, 2024</p>
+            <p class="slide-description">
+                Gliding across the ice together, holding each other up and laughing at our wobbles. 
+                That's when I knew we could face any challenge as long as we had each other.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date9/ice_rink.jpg" alt="Ice Rink" class="gallery-image">
+                <img src="imgs/date9/skating_together.jpg" alt="Skating Together" class="gallery-image">
+                <img src="imgs/date9/hot_chocolate.jpg" alt="Hot Chocolate Break" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 10: Tenth Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 10: The Bookstore Date</h1>
+            <p class="slide-date">February 17, 2024</p>
+            <p class="slide-description">
+                Getting lost in the aisles of books, sharing our favorite stories and discovering new ones. 
+                Your passion for reading made me fall in love with stories all over again.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date10/bookstore_aisles.jpg" alt="Bookstore Aisles" class="gallery-image">
+                <img src="imgs/date10/sharing_books.jpg" alt="Sharing Books" class="gallery-image">
+                <img src="imgs/date10/cozy_reading.jpg" alt="Cozy Reading" class="gallery-image">
+                <img src="imgs/date10/book_purchases.jpg" alt="Book Purchases" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 11: Eleventh Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 11: The Hiking Trail</h1>
+            <p class="slide-date">March 2, 2024</p>
+            <p class="slide-description">
+                Conquering the mountain trail together, encouraging each other every step of the way. 
+                The view from the top was beautiful, but not as beautiful as your smile when we reached it.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date11/trail_start.jpg" alt="Trail Start" class="gallery-image">
+                <img src="imgs/date11/hiking_together.jpg" alt="Hiking Together" class="gallery-image">
+                <img src="imgs/date11/mountain_view.jpg" alt="Mountain View" class="gallery-image">
+                <img src="imgs/date11/summit_celebration.jpg" alt="Summit Celebration" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 12: Twelfth Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 12: The Farmers Market</h1>
+            <p class="slide-date">March 16, 2024</p>
+            <p class="slide-description">
+                Strolling through the farmers market, tasting fresh produce and planning our future meals. 
+                Your excitement about fresh ingredients made me excited about our future together.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date12/market_entrance.jpg" alt="Market Entrance" class="gallery-image">
+                <img src="imgs/date12/fresh_produce.jpg" alt="Fresh Produce" class="gallery-image">
+                <img src="imgs/date12/tasting_samples.jpg" alt="Tasting Samples" class="gallery-image">
+                <img src="imgs/date12/market_bags.jpg" alt="Market Bags" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 13: Thirteenth Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 13: The Wine Tasting</h1>
+            <p class="slide-date">March 30, 2024</p>
+            <p class="slide-description">
+                An elegant evening of wine tasting, learning about different flavors and regions. 
+                Your sophisticated palate and the way you described each wine made the evening unforgettable.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date13/winery_entrance.jpg" alt="Winery Entrance" class="gallery-image">
+                <img src="imgs/date13/wine_tasting.jpg" alt="Wine Tasting" class="gallery-image">
+                <img src="imgs/date13/elegant_dinner.jpg" alt="Elegant Dinner" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 14: Fourteenth Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 14: The Garden Walk</h1>
+            <p class="slide-date">April 13, 2024</p>
+            <p class="slide-description">
+                A peaceful walk through the botanical gardens, admiring the spring blooms and each other. 
+                In that moment, surrounded by nature's beauty, I knew you were the most beautiful thing I'd ever seen.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date14/garden_entrance.jpg" alt="Garden Entrance" class="gallery-image">
+                <img src="imgs/date14/spring_blooms.jpg" alt="Spring Blooms" class="gallery-image">
+                <img src="imgs/date14/garden_bench.jpg" alt="Garden Bench" class="gallery-image">
+                <img src="imgs/date14/butterfly_moment.jpg" alt="Butterfly Moment" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 15: Fifteenth Date -->
+        <div class="slide">
+            <h1 class="slide-title">Date 15: The Perfect Evening</h1>
+            <p class="slide-date">April 27, 2024</p>
+            <p class="slide-description">
+                A quiet evening at home, cooking together, watching our favorite show, and talking about our dreams. 
+                This simple perfection made me realize that every moment with you is magical.
+            </p>
+            <div class="image-gallery">
+                <img src="imgs/date15/home_cooking.jpg" alt="Home Cooking" class="gallery-image">
+                <img src="imgs/date15/cozy_evening.jpg" alt="Cozy Evening" class="gallery-image">
+                <img src="imgs/date15/dreams_talk.jpg" alt="Talking About Dreams" class="gallery-image">
+                <img src="imgs/date15/perfect_moment.jpg" alt="Perfect Moment" class="gallery-image">
+            </div>
+        </div>
+
+        <!-- Slide 16: The Proposal -->
         <div class="slide proposal-slide">
             <div class="proposal-box">
                 <div class="question-mark">?</div>
             </div>
-            <h1 class="proposal-text">Will you be my girlfriend?</h1>
+            <h1 class="proposal-text">¿Quieres ser mi novia?</h1>
         </div>
     </div>
 
@@ -461,9 +765,53 @@
             }
         }
 
-        // Initialize
-        createIndicators();
-        showSlide(0);
+        // Password checking function
+        function checkPassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const passwordError = document.getElementById('passwordError');
+            const passwordScreen = document.getElementById('passwordScreen');
+            const mainContainer = document.getElementById('mainContainer');
+            
+            const enteredPassword = passwordInput.value.trim();
+            const correctPassword = 'Natalko';
+            
+            if (enteredPassword === correctPassword) {
+                // Password is correct - hide password screen and show photo album
+                passwordScreen.style.opacity = '0';
+                setTimeout(() => {
+                    passwordScreen.style.display = 'none';
+                    mainContainer.style.display = 'flex';
+                    // Initialize the photo album
+                    createIndicators();
+                    showSlide(0);
+                }, 800);
+            } else {
+                // Password is incorrect - show error
+                passwordError.textContent = 'Incorrect password. Try again! 💕';
+                passwordError.classList.add('show');
+                passwordInput.value = '';
+                passwordInput.focus();
+                
+                // Hide error after 3 seconds
+                setTimeout(() => {
+                    passwordError.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Allow Enter key to submit password
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('passwordInput');
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+            // Focus on password input when page loads
+            passwordInput.focus();
+        });
+
+        // Initialize photo album (only after password is entered)
     </script>
 </body>
 </html>
