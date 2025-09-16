@@ -185,7 +185,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             padding: 2rem;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
@@ -194,6 +194,8 @@
             border-radius: 20px;
             margin: 1rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .slide.active {
@@ -228,6 +230,10 @@
             font-weight: 400;
         }
 
+        .slide-content {
+            padding-bottom: 4rem;
+        }
+
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -239,7 +245,7 @@
 
         .gallery-image {
             width: 100%;
-            height: 200px;
+            height: 280px;
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -364,7 +370,7 @@
             }
 
             .gallery-image {
-                height: 150px;
+                height: 200px;
             }
 
             .nav-button {
@@ -425,235 +431,267 @@
     <div class="container" id="mainContainer" style="display: none;">
         <!-- Slide 1: First Meeting -->
         <div class="slide active">
-            <h1 class="slide-title">Cita 1: El inicio de Todo</h1>
-            <p class="slide-date">Únor 22</p>
-            <p class="slide-description">
-                Un brunch, una broma, una tula de minecraft, un almuerzo mexicano, una cancion, una caminata y un beso robado.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date1/1757588779685.jpg" alt="Coffee Shop" class="gallery-image">
-                <img src="imgs/date1/1757588779822.jpg" alt="Coffee Shop" class="gallery-image">
-                <img src="imgs/date1/1757588779753.jpg" alt="Coffee Shop" class="gallery-image">
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 1: El inicio de Todo</h1>
+                <p class="slide-date">Únor 22</p>
+                <p class="slide-description">
+                    Un brunch, una broma, una tula de minecraft, un almuerzo mexicano, una cancion, una caminata y un beso robado.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date1/1757588779685.jpg" alt="Coffee Shop" class="gallery-image">
+                    <img src="imgs/date1/1757588779822.jpg" alt="Coffee Shop" class="gallery-image">
+                    <img src="imgs/date1/1757588779753.jpg" alt="Coffee Shop" class="gallery-image">
 
+                </div>
             </div>
         </div>
 
         <!-- Slide 2: Second Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 2: Un mango y un Vino</h1>
-            <p class="slide-date">Březen 1-2</p>
-            <p class="slide-description">
-                Un tour, una comida italiana, ir a UGO y terminar en un brunch.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date2/1757588779223.jpg" alt="Art Gallery" class="gallery-image">
-                <img src="imgs/date2/1757588779302.jpg" alt="Art Gallery" class="gallery-image">
-                <img src="imgs/date2/1757588779363.jpg" alt="Art Gallery" class="gallery-image">
-                <img src="imgs/date2/1757588779423.jpg" alt="Art Gallery" class="gallery-image">
-                <img src="imgs/date2/1757588779487.jpg" alt="Art Gallery" class="gallery-image">
-                <img src="imgs/date2/1757588779559.jpg" alt="Art Gallery" class="gallery-image">
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 2: Un mango y un Vino</h1>
+                <p class="slide-date">Březen 1-2</p>
+                <p class="slide-description">
+                    Un tour, una comida italiana, ir a UGO y terminar en un brunch.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date2/1757588779223.jpg" alt="Art Gallery" class="gallery-image">
+                    <img src="imgs/date2/1757588779302.jpg" alt="Art Gallery" class="gallery-image">
+                    <img src="imgs/date2/1757588779363.jpg" alt="Art Gallery" class="gallery-image">
+                    <img src="imgs/date2/1757588779423.jpg" alt="Art Gallery" class="gallery-image">
+                    <img src="imgs/date2/1757588779487.jpg" alt="Art Gallery" class="gallery-image">
+                    <img src="imgs/date2/1757588779559.jpg" alt="Art Gallery" class="gallery-image">
 
+                </div>
             </div>
         </div>
 
         <!-- Slide 3: Third Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 3: Sorpresa en Kokino</h1>
-            <p class="slide-date">Březen 21-22</p>
-            <p class="slide-description">
-                Tenia mucho tiempo sin verte, quería darte una sorpresa.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date3/1757588778700.jpg" alt="Picnic Setup" class="gallery-image">
-                
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 3: Sorpresa en Kokino</h1>
+                <p class="slide-date">Březen 21-22</p>
+                <p class="slide-description">
+                    Tenia mucho tiempo sin verte, quería darte una sorpresa.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date3/1757588778700.jpg" alt="Picnic Setup" class="gallery-image">
+                    
+                </div>
             </div>
         </div>
 
         <!-- Slide 4: Fourth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 4: Estudiando</h1>
-            <p class="slide-date">Březen 23</p>
-            <p class="slide-description">
-                Intentado, no con mucho éxito, estudiar todo el día.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date4/1757588778449.jpg" alt="Cooking Together" class="gallery-image">
-                <img src="imgs/date4/1757588778560.jpeg" alt="Flour Fight" class="gallery-image">
-                <img src="imgs/date4/WhatsApp Image 2025-09-12 at 13.56.44_73d3f84c.jpg" alt="Our Masterpiece" class="gallery-image">
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 4: Estudiando</h1>
+                <p class="slide-date">Březen 23</p>
+                <p class="slide-description">
+                    Intentado, no con mucho éxito, estudiar todo el día.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date4/1757588778449.jpg" alt="Cooking Together" class="gallery-image">
+                    <img src="imgs/date4/1757588778560.jpeg" alt="Flour Fight" class="gallery-image">
+                    <img src="imgs/date4/WhatsApp Image 2025-09-12 at 13.56.44_73d3f84c.jpg" alt="Our Masterpiece" class="gallery-image">
+                </div>
             </div>
         </div>
 
         <!-- Slide 5: Fifth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 5: Tu primera vez en Brno</h1>
-            <p class="slide-date">Březen 28-30</p>
-            <p class="slide-description">
-                Probando el ramen, mi restaurante favorito y con mucha paciencia por mi despiste.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date5/1757588777924.jpg" alt="Movie Night" class="gallery-image">
-                <img src="imgs/date5/1757588778012.jpg" alt="Sharing Popcorn" class="gallery-image">
-                <img src="imgs/date5/1757588778103.jpg" alt="Cozy Cuddles" class="gallery-image">
-                <img src="imgs/date5/1757588778215.jpg" alt="Falling Asleep" class="gallery-image">
-                <img src="imgs/date5/1757588778344.jpg" alt="Falling Asleep" class="gallery-image">
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 5: Tu primera vez en Brno</h1>
+                <p class="slide-date">Březen 28-30</p>
+                <p class="slide-description">
+                    Probando el ramen, mi restaurante favorito y con mucha paciencia por mi despiste.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date5/1757588777924.jpg" alt="Movie Night" class="gallery-image">
+                    <img src="imgs/date5/1757588778012.jpg" alt="Sharing Popcorn" class="gallery-image">
+                    <img src="imgs/date5/1757588778103.jpg" alt="Cozy Cuddles" class="gallery-image">
+                    <img src="imgs/date5/1757588778215.jpg" alt="Falling Asleep" class="gallery-image">
+                    <img src="imgs/date5/1757588778344.jpg" alt="Falling Asleep" class="gallery-image">
+                </div>
             </div>
         </div>
 
         <!-- Slide 6: Sixth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 6: Petřínská rozhledna</h1>
-            <p class="slide-date">Duben 12-13</p>
-            <p class="slide-description">
-                Un pequeño paseo, con mucha comida.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date6/1757588776352.jpg" alt="Beach Arrival" class="gallery-image">
-                <img src="imgs/date6/1757588776464.jpg" alt="Building Sandcastles" class="gallery-image">
-                <img src="imgs/date6/1757588777228.jpg" alt="Watching Waves" class="gallery-image">
-                
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 6: Petřínská rozhledna</h1>
+                <p class="slide-date">Duben 12-13</p>
+                <p class="slide-description">
+                    Un pequeño paseo, con mucha comida.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date6/1757588776352.jpg" alt="Beach Arrival" class="gallery-image">
+                    <img src="imgs/date6/1757588776464.jpg" alt="Building Sandcastles" class="gallery-image">
+                    <img src="imgs/date6/1757588777228.jpg" alt="Watching Waves" class="gallery-image">
+                    
+                </div>
             </div>
         </div>
 
         <!-- Slide 7: Seventh Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 7: Empieza el verano</h1>
-            <p class="slide-date">Duben 25-27</p>
-            <p class="slide-description">
-                Mucho sushi, mucho sol, arepa y un atardecer muy lindo.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date7/1757588775940.jpg" alt="Concert Venue" class="gallery-image">
-                <img src="imgs/date7/1757588776067.jpg" alt="Dancing Together" class="gallery-image">
-                <img src="imgs/date7/1757588776253.jpg" alt="Singing Along" class="gallery-image">
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 7: Empieza el verano</h1>
+                <p class="slide-date">Duben 25-27</p>
+                <p class="slide-description">
+                    Mucho sushi, mucho sol, arepa y un atardecer muy lindo.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date7/1757588775940.jpg" alt="Concert Venue" class="gallery-image">
+                    <img src="imgs/date7/1757588776067.jpg" alt="Dancing Together" class="gallery-image">
+                    <img src="imgs/date7/1757588776253.jpg" alt="Singing Along" class="gallery-image">
+                </div>
             </div>
         </div>
 
         <!-- Slide 8: Eighth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 8: Brno por 2da vez</h1>
-            <p class="slide-date">Duben 2-4</p>
-            <p class="slide-description">
-                El lago, un globo, probar tajadas y un nuevo juego, un helado y chlebíčky.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date8/1757588774059.jpg" alt="Museum Entrance" class="gallery-image">
-                <img src="imgs/date8/1757588774291.jpg" alt="Exploring Exhibits" class="gallery-image">
-                <img src="imgs/date8/1757588774877.jpg" alt="Museum Selfie" class="gallery-image">
-                <img src="imgs/date8/1757588775025.jpg" alt="Gift Shop" class="gallery-image">
-                <img src="imgs/date8/1757588775296.jpg" alt="Exploring Exhibits" class="gallery-image">
-                <img src="imgs/date8/1757588775402.jpg" alt="Museum Selfie" class="gallery-image">
-                <img src="imgs/date8/1757588775514.jpg" alt="Gift Shop" class="gallery-image">
-                <img src="imgs/date8/1757588775703.jpg" alt="Exploring Exhibits" class="gallery-image">
-                
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 8: Brno por 2da vez</h1>
+                <p class="slide-date">Duben 2-4</p>
+                <p class="slide-description">
+                    El lago, un globo, probar tajadas y un nuevo juego, un helado y chlebíčky.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date8/1757588774059.jpg" alt="Museum Entrance" class="gallery-image">
+                    <img src="imgs/date8/1757588774291.jpg" alt="Exploring Exhibits" class="gallery-image">
+                    <img src="imgs/date8/1757588774877.jpg" alt="Museum Selfie" class="gallery-image">
+                    <img src="imgs/date8/1757588775025.jpg" alt="Gift Shop" class="gallery-image">
+                    <img src="imgs/date8/1757588775296.jpg" alt="Exploring Exhibits" class="gallery-image">
+                    <img src="imgs/date8/1757588775402.jpg" alt="Museum Selfie" class="gallery-image">
+                    <img src="imgs/date8/1757588775514.jpg" alt="Gift Shop" class="gallery-image">
+                    <img src="imgs/date8/1757588775703.jpg" alt="Exploring Exhibits" class="gallery-image">
+                    
+                </div>
             </div>
         </div>
 
         <!-- Slide 9: Ninth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 9: Conociendo a tus amigas</h1>
-            <p class="slide-date">Červen 7-9</p>
-            <p class="slide-description">
-                Luego de mucho tiempo, extrañana verte, aunque me des la gaseosa azul.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date9/1757588773727.jpg" alt="Ice Rink" class="gallery-image">
-                <img src="imgs/date9/1757588776772.jpg" alt="Skating Together" class="gallery-image">
-                
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 9: Conociendo a tus amigas</h1>
+                <p class="slide-date">Červen 7-9</p>
+                <p class="slide-description">
+                    Luego de mucho tiempo, extrañana verte, aunque me des la gaseosa azul.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date9/1757588773727.jpg" alt="Ice Rink" class="gallery-image">
+                    <img src="imgs/date9/1757588776772.jpg" alt="Skating Together" class="gallery-image">
+                    
+                </div>
             </div>
         </div>
 
         <!-- Slide 10: Tenth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 10: Teletrabajo</h1>
-            <p class="slide-date">Červen 30 - Červenec 2</p>
-            <p class="slide-description">
-                Viviendo la citidianidad, un vinito y perdidos en el parque.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date10/1757588773579.jpg" alt="Bookstore Aisles" class="gallery-image">
-                <img src="imgs/date10/1757588773890.jpg" alt="Sharing Books" class="gallery-image">
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 10: Teletrabajo</h1>
+                <p class="slide-date">Červen 30 - Červenec 2</p>
+                <p class="slide-description">
+                    Viviendo la citidianidad, un vinito y perdidos en el parque.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date10/1757588773579.jpg" alt="Bookstore Aisles" class="gallery-image">
+                    <img src="imgs/date10/1757588773890.jpg" alt="Sharing Books" class="gallery-image">
 
+                </div>
             </div>
         </div>
 
         <!-- Slide 11: Eleventh Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 11: Una sorpresa en Brno</h1>
-            <p class="slide-date">Červenec 10-11</p>
-            <p class="slide-description">
-                Aún estoy sin palabras y muy feliz por ello.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date11/WhatsApp Image 2025-09-12 at 14.10.37_dcdc1c90.jpg" alt="Trail Start" class="gallery-image">
-                <img src="imgs/date11/WhatsApp Image 2025-09-12 at 14.10.38_be2bec52.jpg" alt="Hiking Together" class="gallery-image">
-                
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 11: Una sorpresa en Brno</h1>
+                <p class="slide-date">Červenec 10-11</p>
+                <p class="slide-description">
+                    Aún estoy sin palabras y muy feliz por ello.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date11/WhatsApp Image 2025-09-12 at 14.10.37_dcdc1c90.jpg" alt="Trail Start" class="gallery-image">
+                    <img src="imgs/date11/WhatsApp Image 2025-09-12 at 14.10.38_be2bec52.jpg" alt="Hiking Together" class="gallery-image">
+                    
+                </div>
             </div>
         </div>
 
         <!-- Slide 12: Twelfth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 12: Terror en Pardubice</h1>
-            <p class="slide-date">Červenec 25-28</p>
-            <p class="slide-description">
-                Desde tu lugar favorito, hasta tener 2 sustos de horror, junto a tus tvarohové knedlíky.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date12/WhatsApp Image 2025-09-12 at 14.11.23_25580859.jpg" alt="Market Entrance" class="gallery-image">
-                <img src="imgs/date12/WhatsApp Image 2025-09-12 at 14.11.23_4879fc1b.jpg" alt="Fresh Produce" class="gallery-image">
-                
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 12: Terror en Pardubice</h1>
+                <p class="slide-date">Červenec 25-28</p>
+                <p class="slide-description">
+                    Desde tu lugar favorito, hasta tener 2 sustos de horror, junto a tus tvarohové knedlíky.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date12/WhatsApp Image 2025-09-12 at 14.11.23_25580859.jpg" alt="Market Entrance" class="gallery-image">
+                    <img src="imgs/date12/WhatsApp Image 2025-09-12 at 14.11.23_4879fc1b.jpg" alt="Fresh Produce" class="gallery-image">
+                    
+                </div>
             </div>
         </div>
 
         <!-- Slide 13: Thirteenth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 13: Nuestro primer viaje</h1>
-            <p class="slide-date">Srpen 5-12</p>
-            <p class="slide-description">
-                Debemos hacerlo de nuevo.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.37_1bc113a4.jpg" alt="Winery Entrance" class="gallery-image">
-                <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.37_51000866.jpg" alt="Wine Tasting" class="gallery-image">
-                <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.37_bcae44cd.jpg" alt="Elegant Dinner" class="gallery-image">
-                <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.38_0b824b9c.jpg" alt="Wine Tasting" class="gallery-image">
-                <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.38_8175d9ec.jpg" alt="Elegant Dinner" class="gallery-image">
-                <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.38_842549ce.jpg" alt="Wine Tasting" class="gallery-image">
-                
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 13: Nuestro primer viaje</h1>
+                <p class="slide-date">Srpen 5-12</p>
+                <p class="slide-description">
+                    Debemos hacerlo de nuevo.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.37_1bc113a4.jpg" alt="Winery Entrance" class="gallery-image">
+                    <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.37_51000866.jpg" alt="Wine Tasting" class="gallery-image">
+                    <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.37_bcae44cd.jpg" alt="Elegant Dinner" class="gallery-image">
+                    <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.38_0b824b9c.jpg" alt="Wine Tasting" class="gallery-image">
+                    <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.38_8175d9ec.jpg" alt="Elegant Dinner" class="gallery-image">
+                    <img src="imgs/date13/WhatsApp Image 2025-09-12 at 14.10.38_842549ce.jpg" alt="Wine Tasting" class="gallery-image">
+                    
+                </div>
             </div>
         </div>
 
         <!-- Slide 14: Fourteenth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 14: La presentación</h1>
-            <p class="slide-date">Srpen 24</p>
-            <p class="slide-description">
-                ¿Nervioso? Si, ¿Sexo? por pendejos no.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date14/WhatsApp Image 2025-09-12 at 14.10.38_528605fe.jpg" alt="Garden Entrance" class="gallery-image">
-                
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 14: La presentación</h1>
+                <p class="slide-date">Srpen 24</p>
+                <p class="slide-description">
+                    ¿Nervioso? Si, ¿Sexo? por pendejos no.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date14/WhatsApp Image 2025-09-12 at 14.10.38_528605fe.jpg" alt="Garden Entrance" class="gallery-image">
+                    
+                </div>
             </div>
         </div>
 
         <!-- Slide 15: Fifteenth Date -->
         <div class="slide">
-            <h1 class="slide-title">Cita 15: Reencuentro</h1>
-            <p class="slide-date">Srpen 31 - Září 1</p>
-            <p class="slide-description">
-                Amanecer contigo>>>>.
-            </p>
-            <div class="image-gallery">
-                <img src="imgs/date15/WhatsApp Image 2025-09-12 at 14.14.42_8e1cb5ca.jpg" alt="Home Cooking" class="gallery-image">
-                
+            <div class="slide-content">
+                <h1 class="slide-title">Cita 15: Reencuentro</h1>
+                <p class="slide-date">Srpen 31 - Září 1</p>
+                <p class="slide-description">
+                    Amanecer contigo>>>>.
+                </p>
+                <div class="image-gallery">
+                    <img src="imgs/date15/WhatsApp Image 2025-09-12 at 14.14.42_8e1cb5ca.jpg" alt="Home Cooking" class="gallery-image">
+                    
+                </div>
             </div>
         </div>
 
         <!-- Slide 16: The Proposal -->
         <div class="slide proposal-slide">
-            <div class="proposal-box">
-                <div class="question-mark">?</div>
+            <div class="slide-content">
+                <div class="proposal-box">
+                    <div class="question-mark">?</div>
+                </div>
+                <h1 class="proposal-text">¿Quieres ser mi spookie queen?</h1>
             </div>
-            <h1 class="proposal-text">¿Quieres ser mi spookie queen?</h1>
         </div>
     </div>
 
